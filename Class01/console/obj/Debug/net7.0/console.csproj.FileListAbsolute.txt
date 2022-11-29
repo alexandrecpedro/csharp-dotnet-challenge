@@ -1,0 +1,15 @@
+/Users/alexandrepedro/Desktop/IMPORTANTES/INFORMATION_TECHNOLOGY/TORNE-SE_UM_PROGRAMADOR/Challenge_CSHARP_DOTNET/Class01/console/bin/Debug/net7.0/console
+/Users/alexandrepedro/Desktop/IMPORTANTES/INFORMATION_TECHNOLOGY/TORNE-SE_UM_PROGRAMADOR/Challenge_CSHARP_DOTNET/Class01/console/bin/Debug/net7.0/console.deps.json
+/Users/alexandrepedro/Desktop/IMPORTANTES/INFORMATION_TECHNOLOGY/TORNE-SE_UM_PROGRAMADOR/Challenge_CSHARP_DOTNET/Class01/console/bin/Debug/net7.0/console.runtimeconfig.json
+/Users/alexandrepedro/Desktop/IMPORTANTES/INFORMATION_TECHNOLOGY/TORNE-SE_UM_PROGRAMADOR/Challenge_CSHARP_DOTNET/Class01/console/bin/Debug/net7.0/console.dll
+/Users/alexandrepedro/Desktop/IMPORTANTES/INFORMATION_TECHNOLOGY/TORNE-SE_UM_PROGRAMADOR/Challenge_CSHARP_DOTNET/Class01/console/bin/Debug/net7.0/console.pdb
+/Users/alexandrepedro/Desktop/IMPORTANTES/INFORMATION_TECHNOLOGY/TORNE-SE_UM_PROGRAMADOR/Challenge_CSHARP_DOTNET/Class01/console/obj/Debug/net7.0/console.csproj.AssemblyReference.cache
+/Users/alexandrepedro/Desktop/IMPORTANTES/INFORMATION_TECHNOLOGY/TORNE-SE_UM_PROGRAMADOR/Challenge_CSHARP_DOTNET/Class01/console/obj/Debug/net7.0/console.GeneratedMSBuildEditorConfig.editorconfig
+/Users/alexandrepedro/Desktop/IMPORTANTES/INFORMATION_TECHNOLOGY/TORNE-SE_UM_PROGRAMADOR/Challenge_CSHARP_DOTNET/Class01/console/obj/Debug/net7.0/console.AssemblyInfoInputs.cache
+/Users/alexandrepedro/Desktop/IMPORTANTES/INFORMATION_TECHNOLOGY/TORNE-SE_UM_PROGRAMADOR/Challenge_CSHARP_DOTNET/Class01/console/obj/Debug/net7.0/console.AssemblyInfo.cs
+/Users/alexandrepedro/Desktop/IMPORTANTES/INFORMATION_TECHNOLOGY/TORNE-SE_UM_PROGRAMADOR/Challenge_CSHARP_DOTNET/Class01/console/obj/Debug/net7.0/console.csproj.CoreCompileInputs.cache
+/Users/alexandrepedro/Desktop/IMPORTANTES/INFORMATION_TECHNOLOGY/TORNE-SE_UM_PROGRAMADOR/Challenge_CSHARP_DOTNET/Class01/console/obj/Debug/net7.0/console.dll
+/Users/alexandrepedro/Desktop/IMPORTANTES/INFORMATION_TECHNOLOGY/TORNE-SE_UM_PROGRAMADOR/Challenge_CSHARP_DOTNET/Class01/console/obj/Debug/net7.0/refint/console.dll
+/Users/alexandrepedro/Desktop/IMPORTANTES/INFORMATION_TECHNOLOGY/TORNE-SE_UM_PROGRAMADOR/Challenge_CSHARP_DOTNET/Class01/console/obj/Debug/net7.0/console.pdb
+/Users/alexandrepedro/Desktop/IMPORTANTES/INFORMATION_TECHNOLOGY/TORNE-SE_UM_PROGRAMADOR/Challenge_CSHARP_DOTNET/Class01/console/obj/Debug/net7.0/console.genruntimeconfig.cache
+/Users/alexandrepedro/Desktop/IMPORTANTES/INFORMATION_TECHNOLOGY/TORNE-SE_UM_PROGRAMADOR/Challenge_CSHARP_DOTNET/Class01/console/obj/Debug/net7.0/ref/console.dll

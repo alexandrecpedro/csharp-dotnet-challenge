@@ -1,0 +1,14 @@
+﻿/* Sheila é uma analista de testes.
+Ela precisa de uma automação (software) que leia 3 nomes na tela,
+e leia 3 sobrenomes.
+Ao final do programa, mostre os nomes cadastrados junto com os sobrenomes cadastrados.
+
+Exemplo de usabilidade:
+Digite os nomes
+nome 1, nome 2, nome 3
+Digite os sobrenomes
+sobrenome 1, sobrenome 2, sobrenome 3
+
+nome 1 sobrenome 1
+nome 2 sobrenome 2
+nome 3 sobrenome 3 */

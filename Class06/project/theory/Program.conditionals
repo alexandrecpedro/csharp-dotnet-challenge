@@ -1,0 +1,31 @@
+﻿/** CONDITIONALS AND LOGICAL OPERATORS **/
+// if else
+Console.WriteLine("Enter a number");
+var number8 = Convert.ToInt32(Console.ReadLine());
+
+if (number8 >= 18 || number8 <= 10)
+{
+    Console.WriteLine("You have enter a number greater than 18 or less than 16")
+}
+else if (number8 >= 16) 
+{
+    Console.WriteLine("You have enter a number greater than 16 and less than 18")
+}
+else 
+{
+    Console.WriteLine("Invalid option");
+}
+
+// switch
+switch (number8)
+{
+    case >=18:
+        Console.WriteLine($"You have entered a number greater than 18");
+        break;
+    case >=16:
+        Console.WriteLine($"You have entered a number greater than 16 and less than 18")
+        break;
+    default:
+        Console.WriteLine("Invalid option");
+        break;
+}

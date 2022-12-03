@@ -1,0 +1,48 @@
+﻿/** ARRAY **/
+string[] arrayNomes = new string[3];
+
+arrayNomes[0] = "Danilo";
+arrayNomes[1] = "Sheila";
+arrayNomes[2] = "Lana";
+
+foreach (string nome in arrayNomes)
+{
+    Console.WriteLine(nome);
+}
+
+/** COLLECTIONS **/
+// LIST = adicionar dinamicamente elementos num array
+List<string> listaNomes = new List<string>();
+
+listaNomes.Add("Danilo");
+listaNomes.Add("Sheila");
+listaNomes.Add("Lana");
+
+foreach (string nome in listaNomes)
+{
+    Console.WriteLine(nome);
+}
+ 
+listaNomes.ToArray(); // convertendo em array
+
+// MATRIZ
+List<string[]> matrizDeNomes = new List<string[]>();
+
+string[] cliente = new string[3];
+cliente[0] = "Danilo";
+cliente[1] = "(00)0000-0000";
+cliente[2] = "000.000.000-00";
+matrizDeNomes.Add(cliente);
+
+string[] cliente2 = new string[3];
+cliente2[0] = "Michele";
+cliente2[1] = "(00)0000-0001";
+cliente2[2] = "000.000.000-01";
+matrizDeNomes.Add(cliente2);
+
+foreach (string[] cli in matrizDeNomes)
+{
+    Console.WriteLine($"Nome: {cli[0]}");
+    Console.WriteLine($"Telefone: {cli[1]}");
+    Console.WriteLine($"CPF: {cli[2]}\n");
+}

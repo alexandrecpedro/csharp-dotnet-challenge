@@ -1,0 +1,53 @@
+﻿/* Temos a missão de construir um pequeno sistema onde:
+(1) Iremos capturar a quantidade de litros de um posto de combustível
+(2) Iremos capturar também o valor (R$) do litro
+
+Quando chegar o cliente, perguntar o nome dele e o valor (R$) que o cliente 
+deseja colocar de combustível.
+
+Baseado no valor que ele colocou de combustível, você irá tirar a quantidade 
+de litros do estoque.
+
+No final do programa, mostrar para o cliente, a quantidade de litros que ele
+colocou em seu veículo; e mostrar quantos litros sobrou no posto.
+
+OBS: Não precisamos trabalhar com condicionais, iremos utilizar somente o que
+aprendemos até agora (uso de variáveis, leitura e escrita na tela)
+*/
+
+Console.WriteLine("====== EXERCICIO 2 ======");
+Console.WriteLine("Bem-vindo ao posto");
+Console.WriteLine("Quantidade de litros de combustível no tanque do posto: ");
+double volumeEstoquePosto = Convert.ToDouble(Console.ReadLine());
+
+Console.WriteLine("\nValor (R$) do litro de combustível: ");
+double valorPorLitro = Convert.ToDouble(Console.ReadLine());
+
+Console.WriteLine("\nNome do cliente: ");
+string? nomeCliente = Console.ReadLine();
+
+Console.WriteLine("\nQuantidade (R$) de combustível que deseja abastecer seu veículo: ");
+double valorAbastecimento = Convert.ToDouble(Console.ReadLine());
+
+// Console.WriteLine("Quantidade de litros de combustível que foi abastecido no veículo: ");
+double volumeCombustivelVeiculo = valorAbastecimento/valorPorLitro;
+
+if (volumeCombustivelVeiculo > volumeEstoquePosto)
+{
+    Console.WriteLine($"""
+    A quantidade de litros que {nomeCliente} deseja é maior que a disponível no posto.
+    Só aceitamos {volumeEstoquePosto} litros.
+    E o cliente {nomeCliente} solicitou {volumeCombustivelVeiculo} litros.
+    """);
+}
+else
+{
+    // Console.WriteLine("Quantidade de litros de combustível restante no posto: ");
+    volumeEstoquePosto -= volumeCombustivelVeiculo;
+
+    Console.WriteLine($"""
+        Cliente: {nomeCliente}
+        Quantidade de combustível abastecido: {volumeCombustivelVeiculo.ToString("0.##")} litros
+        Volume do estoque do posto: {volumeEstoquePostoRestante.ToString("0.##")} litros
+    """);
+}

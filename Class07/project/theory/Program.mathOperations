@@ -1,0 +1,16 @@
+﻿/** MATHEMATICAL OPERATIONS **/
+int number1 = 1;
+int number2 = 20;
+var sum = number1 + number2;
+Console.WriteLine($""" The sum is: {sum} """);
+
+double number3 = 100.50;
+double number4 = 20.5;
+var division = number3 / number4;
+Console.WriteLine($""" The division is: {division.ToString("0.00")} """);
+
+string number5 = "10.50";
+double number6 = 2.5;
+var sum2 = Convert.ToDouble(number5) + number6;
+// var sum2 = double.Parse(number5) + number6;
+Console.WriteLine($""" The sum is: {sum2} """);

@@ -1,0 +1,218 @@
+﻿List<string[]> listaDeClientes = new List<string[]>();
+List<string[]> contaCorrente = new List<string[]>();
+
+while (true)
+{
+    Console.Clear();
+
+    Console.WriteLine("""
+    =================[Seja bem-vindo à empresa Lina]=================
+    O que você deseja fazer?
+    1 - Cadastrar o cliente
+    2 - Ver conta corrente
+    3 - Fazer crédito em conta
+    4 - Fazer débito em conta
+    5 - Mostrar clientes
+    6 - Sair do sistema
+    """);
+
+    var opcao = Console.ReadLine()?.Trim();
+    Console.Clear();
+    bool sair = false;
+
+    switch (opcao)
+    {
+        case "1":
+            Console.Clear();
+            cadastrarCliente();
+            break;
+        case "2": 
+            Console.Clear();
+            
+            break;
+        case "3":
+            Console.Clear();
+            adicionarCreditoCliente();
+            break;
+        case "4":
+            Console.Clear();
+
+            break;
+        case "5":
+            Console.Clear();
+            mostrarClientes();
+            break;
+        case "6":
+            sair = true;
+            break;
+        default:
+            Console.WriteLine("Opção inválida!");
+            break;
+    }
+
+    if (sair) break;
+    Thread.Sleep(4000);
+}
+
+void cadastrarCliente() 
+{
+    var id = Guid.NewGuid();
+
+    Console.WriteLine("Informe o nome do cliente:");
+    var nomeCliente = Console.ReadLine();
+    Console.Clear();
+
+    Console.WriteLine($"Informe o telefone do cliente {nomeCliente}: ");
+    var telefoneCliente = Console.ReadLine();
+    Console.Clear();
+
+    Console.WriteLine($"Informe o email do cliente {nomeCliente}: ");
+    var emailCliente = Console.ReadLine();
+    Console.Clear();
+
+    if (listaDeClientes.Count > 0)
+    {
+        string[]? cli = listaDeClientes.Find(c => c[2] == telefoneCliente);
+        if (cli != null)
+        {
+            mensagem($"""
+            Cliente já cadastrado com este telefone: {telefoneCliente}.
+            Cadastre novamente!
+            """);
+            cadastrarCliente();
+        }
+    }
+
+    string[] cliente = new string[4];
+
+    cliente[0] = id.ToString();
+    cliente[1] = nomeCliente ?? "[Sem Nome]";
+    cliente[2] = telefoneCliente.ToString() ?? "[Sem Telefone]";
+    cliente[3] = emailCliente.ToString() ?? "[Sem Email]";
+
+    listaDeClientes.Add(cliente);
+
+    mensagem($"""{nomeCliente} cadastrado com sucesso. """);
+}
+
+void mensagem(string msg)
+{
+    Console.Clear();
+    Console.WriteLine(msg);
+    Thread.Sleep(1500);
+}
+
+void listarClientesCadastrados()
+{
+    if (listaDeClientes.Count == 0)
+    {
+        menuCadastraClienteSeNaoExiste();
+    }
+
+    mostrarClientes(false, 0, "=================[ Selecione um cliente da lista ]=================");
+}
+
+void mostrarClientes(
+    bool sleep = true, 
+    int timerSleep = 2000, 
+    string header = "=================[ Lista de clientes ]=================") 
+{
+    Console.Clear();
+    Console.WriteLine(header);
+
+    foreach (var cliente in listaDeClientes)
+    {
+        Console.WriteLine($"""
+        ID: {cliente[0]}
+        Nome do cliente: {cliente[1]}
+        Telefone do cliente: {cliente[2]}
+        Email do cliente: {cliente[3]}
+        ----------------------------------
+        """);
+
+        if (sleep) 
+        {
+            Thread.Sleep(timerSleep);
+            Console.Clear();
+        }
+    }
+}
+
+void adicionarCreditoCliente()
+{
+    Console.Clear();
+    var cliente = capturaCliente();
+
+    Console.Clear();
+    Console.WriteLine("Digite o valor do crédito: ");
+    double credito = Convert.ToDouble(Console.ReadLine());
+
+    string[] creditoConta = new string[2];
+    creditoConta[0] = cliente[0];
+    creditoConta[1] = credito.ToString();
+
+    contaCorrente.Add(creditoConta);
+
+    var idCliente = cliente[0];
+
+    // Saldo do cliente {cliente[1]}: R$ {saldoCliente(idCliente).ToString("0.00")}
+    mensagem($"""
+    Créditos adicionado com sucesso ...
+    Saldo do cliente {cliente[1]}: R$ {saldoCliente(idCliente).ToString("0.00")}
+    """);
+}
+
+string[] capturaCliente()
+{
+    listarClientesCadastrados();
+    var idCliente = Console.ReadLine()?.Trim();
+    string[]? cliente = listaDeClientes.Find(c => c[0] == idCliente);
+
+    if (cliente == null)
+    {
+        mensagem("Cliente não encontrado na lista.");
+        Thread.Sleep(1000);
+        Console.Clear();
+        menuCadastraClienteSeNaoExiste();
+        return capturaCliente();
+    }
+
+    return cliente;
+}
+
+double saldoCliente(string idCliente)
+{
+    var contaCorrenteCliente = contaCorrente.FindAll(cc => cc[0] == idCliente);
+    if (contaCorrenteCliente.Count == 0) return 0;
+
+    return contaCorrenteCliente.Sum(cc => Convert.ToDouble(cc[1]));
+}
+
+void menuCadastraClienteSeNaoExiste()
+{
+    Console.WriteLine("""
+    O que você deseja fazer?
+    1 - Cadastrar o cliente
+    2 - Voltar ao menu
+    3 - Sair do sistema
+    """);
+
+    var opcao = Console.ReadLine()?.Trim();
+
+    switch (opcao)
+    {
+        case "1":
+            cadastrarCliente();
+            break;
+        case "2":
+            break;
+        case "3":
+            // Exit application with success = 0
+            // Exit application with error = -1
+            System.Environment.Exit(0);
+            break;
+        default:
+            Console.WriteLine("Opção inválida!");
+            break;
+    }
+}

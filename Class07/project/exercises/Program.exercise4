@@ -1,0 +1,12 @@
+﻿/* Faça um programa que mostre a velocidade (em km/h) printando km por km,
+de um veículo de corrida que vai sair de 0 a 1000 km/h
+*/
+
+Console.WriteLine("====== EXERCICIO 4 ======");
+Console.WriteLine("Veículo saindo");
+Thread.Sleep(2000);
+for (var km = 0; km <= 1000; km++)
+{
+    Console.WriteLine($"Passando pelo km {km} ...");
+    Thread.Sleep(10);
+}

@@ -14,6 +14,7 @@ saldo em conta.
 */
 
 Console.WriteLine("====== EXERCICIO 3 ======");
+Console.Clear();
 Console.WriteLine("Prezado investidor, digite o seu nome: ");
 string? nomeInvestidor = Console.ReadLine();
 
@@ -25,7 +26,7 @@ double saldoInvestimento = Convert.ToDouble(Console.ReadLine());
 
 saldoInvestimento *= (1 - 0.05/100);
 
-Console.WriteLine($"O valor investido é de: {saldoInvestimento}");
+Console.WriteLine($"O valor investido é de: R$ {saldoInvestimento.ToString("0.00")}");
 
 Console.WriteLine("""
 Deseja sacar dinheiro do seu investimento? 
@@ -33,6 +34,7 @@ Deseja sacar dinheiro do seu investimento?
 2-Não
 """);
 int desejaSacar = Convert.ToInt16(Console.ReadLine());
+Console.Clear();
 
 switch (desejaSacar)
 {

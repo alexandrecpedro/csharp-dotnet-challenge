@@ -1,0 +1,12 @@
+﻿/** DYNAMIC OBJECT **/
+dynamic clienteDynamic = new {
+    ID = 1,
+    Name = "Test",
+    Phone = "1111-1111"
+};
+
+Console.WriteLine($"""
+ID: {clientDynamic.ID}
+Name: {clientDynamic.Name}
+Phone: {clientDynamic.Phone}
+""");

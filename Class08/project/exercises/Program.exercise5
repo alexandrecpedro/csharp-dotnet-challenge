@@ -1,0 +1,29 @@
+﻿/* Luana é uma professora de matemática e está querendo fazer um programa
+para calcular a tabuada. Em sua usabilidade, Luana irá digitar o multiplicador
+e a quantidade total multiplicada.
+O programa irá mostrar um resultado como no exemplo:
+
+Digite o multiplicador:
+1
+Digite a quantidade multiplicada:
+3
+
+Resultado:
+1 x 1 = 1
+1 x 2 = 2
+1 x 3 = 3
+*/
+
+Console.WriteLine("====== EXERCICIO 5 ======");
+Console.WriteLine("\nPrezada Luana, digite o multiplicador:");
+int multiplicador = Convert.ToInt16(Console.ReadLine());
+
+Console.WriteLine("\nDigite a quantidade multiplicada:");
+int quantidadeMultiplicada = Convert.ToInt16(Console.ReadLine());
+
+Console.WriteLine($"\nTabuada do número {multiplicador}:");
+
+for (int i = 1; i <= quantidadeMultiplicada; i++)
+{
+    Console.WriteLine($"{multiplicador} x {i} = {multiplicador * i}");
+}

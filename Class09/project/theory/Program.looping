@@ -1,0 +1,38 @@
+﻿/** LOOP **/
+// (1) While
+int a = 1;
+
+while (a < 6)
+{
+    if (a === 1)
+    {
+        a++;
+        continue;
+    }
+
+    if (a == 4) break;
+    Console.WriteLine(a);
+}
+
+// (2) Do While
+int b = 20;
+
+do {
+    Console.WriteLine(b);
+    b++;
+}
+while (b < 3);
+
+// (3) For
+for (int c = 0; c < 3; c++)
+{
+    Console.WriteLine(c);
+}
+
+// (4) ForEach
+int[] array = {1, 2, 3};
+
+foreach (int item in array)
+{
+    Console.WriteLine(item);
+}

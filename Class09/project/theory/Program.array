@@ -1,0 +1,11 @@
+﻿/** ARRAY **/
+string[] arrayNomes = new string[3];
+
+arrayNomes[0] = "Danilo";
+arrayNomes[1] = "Sheila";
+arrayNomes[2] = "Lana";
+
+foreach (string nome in arrayNomes)
+{
+    Console.WriteLine(nome);
+}

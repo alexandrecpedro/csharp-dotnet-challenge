@@ -1,0 +1,10 @@
+﻿/** VARIABLES **/
+// Data Types - C#
+Console.WriteLine("Enter an information: ");
+var information = Console.ReadLine();
+
+Console.WriteLine($"""
+    Entered value: {information}
+""");
+
+Console.WriteLine("==========[Ending system]==========");

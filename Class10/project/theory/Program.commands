@@ -1,0 +1,12 @@
+﻿/** COMMANDS **/
+// (1) dotnet run - Run the application
+// (2) dotnet build - Compile the application
+// (3) dotnet watch run - Compile and run
+
+/** PSEUDOCODE **/
+// Part 1 => show() - Show at screen
+// Part 2 => read() - Require an information from user (enter by screen)
+
+Console.WriteLine("==========================");
+Console.WriteLine("Welcome to my first system");
+Console.WriteLine("========================== \n");

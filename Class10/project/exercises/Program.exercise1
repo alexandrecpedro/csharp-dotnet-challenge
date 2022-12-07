@@ -1,0 +1,37 @@
+﻿/* Sheila é uma analista de testes.
+Ela precisa de uma automação (software) que leia 3 nomes na tela,
+e leia 3 sobrenomes.
+Ao final do programa, mostre os nomes cadastrados junto com os sobrenomes cadastrados.
+
+Exemplo de usabilidade:
+Digite os nomes
+nome 1, nome 2, nome 3
+Digite os sobrenomes
+sobrenome 1, sobrenome 2, sobrenome 3
+
+nome 1 sobrenome 1
+nome 2 sobrenome 2
+nome 3 sobrenome 3 */
+
+Console.WriteLine("====== EXERCISE 1 ======");
+Console.WriteLine("Register names")
+Console.WriteLine("Enter a name: ");
+string? name1 = Console.ReadLine();
+Console.WriteLine("Enter a name: ");
+string? name2 = Console.ReadLine();
+Console.WriteLine("Enter a name: ");
+string? name3 = Console.ReadLine();
+
+Console.WriteLine("Register last names")
+Console.WriteLine($"""Enter a last name from {name1}: """);
+var lastName1 = Console.ReadLine();
+Console.WriteLine($"""Enter a last name from {name2}: """);
+var lastName2 = Console.ReadLine();
+Console.WriteLine($"""Enter a last name from {name3}: """);
+var lastName3 = Console.ReadLine();
+
+Console.WriteLine($"""
+    Name 1: {name1} {lastName1}
+    Name 2: {name2} {lastName2}
+    Name 3: {name3} {lastName3}
+""");

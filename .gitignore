@@ -485,6 +485,3 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
-
-*./database-files/test*.csv
-*./database-files/test/**.json

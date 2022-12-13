@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api-test", "api-test\api-test.csproj", "{D9400EFB-9702-4D51-84CF-C5BFFD9FF6FF}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api", "api\api.csproj", "{45EF13E1-3587-4D62-A53C-DDBF2DF2CE72}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "api.test", "api.test\api.test.csproj", "{B164A26B-57DA-4CD4-8257-ECF5DB9A7EE5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +24,9 @@ Global
 		{45EF13E1-3587-4D62-A53C-DDBF2DF2CE72}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45EF13E1-3587-4D62-A53C-DDBF2DF2CE72}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45EF13E1-3587-4D62-A53C-DDBF2DF2CE72}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B164A26B-57DA-4CD4-8257-ECF5DB9A7EE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B164A26B-57DA-4CD4-8257-ECF5DB9A7EE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B164A26B-57DA-4CD4-8257-ECF5DB9A7EE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B164A26B-57DA-4CD4-8257-ECF5DB9A7EE5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

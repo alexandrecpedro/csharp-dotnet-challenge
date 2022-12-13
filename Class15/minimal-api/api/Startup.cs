@@ -37,7 +37,7 @@ public class Startup
         {
             app.UseDeveloperExceptionPage();
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Minimal API Desafio v1"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Minimal API v1"));
         }
 
         app.UseHttpsRedirection();
@@ -55,7 +55,6 @@ public class Startup
         });
     }
 
-    
     #region Rotas utilizando Minimal API
 
     public void MapRoutes(IEndpointRouteBuilder app)

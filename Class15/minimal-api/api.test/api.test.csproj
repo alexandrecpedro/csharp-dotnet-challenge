@@ -10,7 +10,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <!-- // versão com erro -->
+    <!-- <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="5.0.4" /> -->
+    <!-- // versão sem erro -->
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" Version="7.0.0" />
+
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.3.2" />
     <PackageReference Include="MSTest.TestAdapter" Version="2.2.10" />
     <PackageReference Include="MSTest.TestFramework" Version="2.2.10" />
@@ -18,7 +22,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../api/api.csproj" />
   </ItemGroup>
 
 </Project>

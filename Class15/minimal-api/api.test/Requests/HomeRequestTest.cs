@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using MinimalApi;
 
-namespace api_test.Request;
+namespace api.test.Request;
 
 [TestClass]
 public class HomeRequestTest
@@ -19,6 +19,11 @@ public class HomeRequestTest
     {
         _testContext = testContext;
         _http = new WebApplicationFactory<Startup>();
+
+        _http = _http.WithWebHostBuilder(builder =>
+        {
+            builder.UseSetting("https_port", PORT).UseEnvironment("Testing");
+        });
     }
 
     [ClassCleanup]
@@ -30,14 +35,10 @@ public class HomeRequestTest
     [TestMethod]
     public async Task TestaSeAHomeDaAPIExiste()
     {
-        _http = _http.WithWebHostBuilder(builder =>
-        {
-            builder.UseSetting("https_port", PORT).UseEnvironment("Testing");
-        });
-
         var client = _http.CreateClient();
         var response = await client.GetAsync("/");
 
         Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+        // Assert.AreEqual("application/json; charset=utf-8");
     }
 }

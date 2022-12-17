@@ -1,0 +1,39 @@
+@using Data.Models
+
+<div>
+    <label for="nome">Nome</label>
+    <InputText id="nome" class="form-control" @bind-Value="Cliente.Nome" />
+</div>
+
+<div>
+    <label for="telefone">Telefone</label>
+    <InputText id="telefone" class="form-control" @bind-Value="Cliente.Telefone" />
+</div>
+
+<div>
+    <label for="email">Email</label>
+    <InputText type="email" id="email" class="form-control" @bind-Value="Cliente.Email" />
+</div>
+
+<DataAnnotationsValidator />
+<ValidationSummary />
+
+@if(!string.IsNullOrEmpty(Mensagem)){
+    <br>
+    <div class="alert alert-success" role="alert">
+        @Mensagem
+    </div>
+}
+
+<div class="botao_form">
+    <button type="submit">Enviar</button>
+</div>
+
+@code
+{
+    [Parameter]
+    public string? Mensagem { get;set; }
+
+    [Parameter]
+    public Cliente Cliente { get;set; } = default!;
+}

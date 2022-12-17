@@ -1,0 +1,48 @@
+﻿@page "/login"
+
+@using Data.DTOs
+@using Data.Services
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
+@using System.Text.Json
+@inject AdministradorServico AdministradorServico
+@inject IJSRuntime JsRuntime
+@inject NavigationManager NavManager
+@inject ProtectedLocalStorage BrowserStorage
+
+<form @onsubmit="HandleValidSubmit">
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="email" @bind="login.Email" aria-describedby="emailHelp" placeholder="Email">
+  </div>
+  <div class="form-group" style="margin-top: 10px;">
+    <label for="senha">Senha</label>
+    <input type="password" class="form-control" id="senha" @bind="login.Senha" placeholder="Senha">
+  </div>
+  <br>
+  <button type="submit" class="btn btn-primary">Logar</button>
+</form>
+
+@code {
+    private LoginDTO login = new();
+
+    private async Task HandleValidSubmit()
+    {
+        if(string.IsNullOrEmpty(login.Email) || string.IsNullOrEmpty(login.Senha))
+        {
+            await JsRuntime.InvokeVoidAsync("alert", "Email e senha sao obrigatórias");
+            return;
+        }
+
+        var adm = await AdministradorServico.LoginAsync(login);
+
+        if(adm is null)
+        {
+            await JsRuntime.InvokeVoidAsync("alert", "Email ou senha inválidos");
+            return;
+        }
+
+        await BrowserStorage.SetAsync("admLogado", JsonSerializer.Serialize(adm));
+
+        NavManager.NavigateTo("/clientes");
+    }
+}

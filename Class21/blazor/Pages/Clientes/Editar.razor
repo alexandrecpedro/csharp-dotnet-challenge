@@ -1,0 +1,74 @@
+﻿@page "/clientes/{Id:int}/editar"
+
+@using Data.Models
+@using Data.Services
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
+@inject ClienteServico ClienteServico
+@inject IJSRuntime JsRuntime
+@inject NavigationManager NavManager
+@inject ProtectedLocalStorage BrowserStorage
+
+@if(@cliente is not null)
+{
+    <PageTitle>Editando registro do cliente: @cliente.Nome</PageTitle>
+
+    <h1>Editando registro do cliente: @cliente.Nome</h1>
+
+    <hr>
+    <NavLink class="btn btn-default" href="clientes">
+        Cancelar
+    </NavLink>
+    <hr>
+
+    <EditForm Model="@cliente" OnValidSubmit="@HandleValidSubmit">
+        <Form Cliente="@cliente" Mensagem="@mensagem" />
+    </EditForm>
+}
+else{
+    <h1>Cliente informado pelo ID (@Id) não localizado</h1>
+}
+
+@code {
+    [Parameter]
+    public int Id { get;set; }
+
+    private string? token { get;set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(firstRender)
+            await AdministradorServico.RedirectLoginSeNaoLogado(BrowserStorage, NavManager);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        token = await AdministradorServico.GetToken(BrowserStorage);
+        if(string.IsNullOrEmpty(token)) return;
+        
+        this.cliente = await ClienteServico.BuscarPorId(Id, token);
+    }
+
+    private async Task HandleValidSubmit()
+    {
+        if(cliente is null)
+        {
+            await JsRuntime.InvokeVoidAsync("alert", "Não é possivel atualizar um cliente inexistente");
+            return;
+        }
+
+        await ClienteServico.Atualizar(cliente, token);
+        // estratégia 1 (alert)
+        await JsRuntime.InvokeVoidAsync("alert", "Atualizado com sucesso!");
+
+        // estratégia 2 (Mensagem na tela)
+        mensagem = "Atualização realizada com sucesso";
+
+        // estratégia 3 (Navegar para outro local)
+        NavManager.NavigateTo("/clientes");
+    }
+
+    private string mensagem = string.Empty;
+
+    private Cliente? cliente = null;
+}

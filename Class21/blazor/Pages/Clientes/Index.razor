@@ -1,0 +1,93 @@
+@page "/clientes"
+
+@using Data.Models
+@using Data.Services
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
+@inject ClienteServico ClienteServico
+@inject IJSRuntime JsRuntime
+@inject NavigationManager NavManager
+@inject ProtectedLocalStorage BrowserStorage
+
+<PageTitle>Lista de Clientes</PageTitle>
+
+<h1>Lista de clientes</h1>
+
+<hr>
+<NavLink class="btn btn-primary" href="clientes/novo">
+    <span class="oi oi-plus" aria-hidden="true"></span> Novo
+</NavLink>
+<hr>
+
+@if (clientes is null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Telefone</th>
+                <th>Email</th>
+                <th>Data de criação</th>
+                <th class="2"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var cliente in clientes)
+            {
+                <tr>
+                    <td>@cliente.Id</td>
+                    <td>@cliente.Nome</td>
+                    <td>@cliente.Telefone</td>
+                    <td>@cliente.Email</td>
+                    <td>@cliente.DataCriacao.ToString("dd/mm/yyyy HH:MM")</td>
+                    <td>
+                        <a class="btn btn-primary" href="clientes/@cliente.Id/editar">
+                            <span class="oi oi-edit" aria-hidden="true"></span> Editar
+                        </a>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger" @onclick="()=>Excluir(cliente)">Apagar</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Cliente[]? clientes;
+
+    private async Task Excluir(Cliente cliente)
+    {
+        bool confirmed = await JsRuntime.InvokeAsync<bool>("confirm", "Confirma?");
+        if(confirmed)
+        {
+            await ClienteServico.Excluir(cliente, token);
+            await CarregaClientes();
+        }
+    }
+
+    private async Task CarregaClientes()
+    {
+        clientes = await ClienteServico.Todos(token);
+    }
+    private string? token { get;set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(firstRender)
+            await AdministradorServico.RedirectLoginSeNaoLogado(BrowserStorage, NavManager);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        token = await AdministradorServico.GetToken(BrowserStorage);
+        if(string.IsNullOrEmpty(token)) return;
+        
+        await CarregaClientes();
+    }
+}

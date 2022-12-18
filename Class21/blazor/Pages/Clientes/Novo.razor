@@ -1,0 +1,57 @@
+﻿@page "/clientes/novo"
+
+@using Data.Models
+@using Data.Services
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Components.Server.ProtectedBrowserStorage
+@inject ClienteServico ClienteServico
+@inject IJSRuntime JsRuntime
+@inject NavigationManager NavManager
+@inject ProtectedLocalStorage BrowserStorage
+
+<PageTitle>Novo Cliente</PageTitle>
+
+<h1>Cadastrando cliente</h1>
+
+<hr>
+<NavLink class="btn btn-default" href="clientes">
+    Cancelar
+</NavLink>
+<hr>
+
+<EditForm Model="@cliente" OnValidSubmit="@HandleValidSubmit">
+    <Form Cliente="@cliente" Mensagem="@mensagem" />
+</EditForm>
+
+@code {
+    private async Task HandleValidSubmit()
+    {
+        await ClienteServico.Incluir(cliente, token);
+        // estratégia 1 (alert)
+        await JsRuntime.InvokeVoidAsync("alert", "Cadastrado com sucesso!");
+
+        // estratégia 2 (Mensagem na tela)
+        mensagem = "Cadastro realizado com sucesso";
+        cliente = new Cliente();
+
+        // estratégia 3 (Navegar para outro local)
+        NavManager.NavigateTo("/clientes");
+    }
+
+    private string mensagem = string.Empty;
+
+    private Cliente cliente = new Cliente();
+
+    private string? token { get;set; }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if(firstRender)
+            await AdministradorServico.RedirectLoginSeNaoLogado(BrowserStorage, NavManager);
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        token = await AdministradorServico.GetToken(BrowserStorage);
+    }
+}
